@@ -41,6 +41,27 @@ class InspectionSlotsController {
 
         
     }
+    
+    /**
+     * By default, it returns the slots are NOT available.
+     * because usually, available slots are more than the not available slots, thus, we send the NOT available
+     * slots to reduce payload size. 
+     * @param req Resquest
+     * @param res Response
+     */
+    public static async getAvailable(req: Request, res: Response): Promise<void> {
+        try {
+            const result = await InspectionSlotsHelper.getAvailable();
+            
+            res.sendSuccess(result);
+        } catch (error) {
+            console.log(error.message);
+            res.sendError(error.message);
+        }
+
+        
+    }
+    
 }
 
 

@@ -1,4 +1,4 @@
-import InspectionSlot from "../models/InspectionSlot";
+import InspectionSlot, { IInspectionSlot } from "../models/InspectionSlot";
 
 class InspectionSlotsHelper {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -52,6 +52,26 @@ class InspectionSlotsHelper {
         }
 
         return true;
+    }
+
+    /**
+     * static async getAvailable
+     */
+    public static async getAvailable(): Promise<Array<IInspectionSlot>> {
+        const currentDate = new Date();
+
+        const minDate = new Date(currentDate.getTime() + 3600000);
+        const maxDate = new Date(currentDate.getTime() + 1814400000);
+
+        const result = await InspectionSlot.find({
+            from: {
+                $gte: minDate,
+                $lt: maxDate,
+            },
+        });
+
+
+        return result;
     }
 }
 
