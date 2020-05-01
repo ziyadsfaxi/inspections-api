@@ -10,7 +10,14 @@ class InspectionSlotsController {
     private constructor() {};
 
     public static async index(req: Request, res: Response): Promise<void> {
-        res.sendSuccess("yaay");
+        try {
+            const slots = await InspectionSlot.find();
+
+            res.sendSuccess(slots);
+        } catch (error) {
+            console.log(error);
+            res.sendError(error.message);
+        }
     }
 
     public static async create(req: Request, res: Response): Promise<void> {
