@@ -10,9 +10,9 @@ export default function responseSuccessErrorOverride(req: Request, res: Response
     return res.json(response);
   };
 
-  res.sendError = (message) => {
+  res.sendError = (message, code = "-1") => {
     const response: IResponse = {
-      code: "-1",
+      code,
       message,
     };
     return res.json(response);
