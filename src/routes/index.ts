@@ -1,12 +1,13 @@
 import express from "express";
-import { check, checkSchema } from "express-validator";
+import { checkSchema } from "express-validator";
 
 import InspectionSlotsController from "../controllers/inspections.controller";
+import RequestBodyValidator from "../middlewares/requestBodyValidator.middleware";
+import * as inspectSlotValidator from "../validators/inspectionSlot.validator";
 
 // Initialize the main router
 const router = express.Router();
 
-
 router.get("/inspection-slots", InspectionSlotsController.index);
-router.post("/inspection-slots", InspectionSlotsController.create);
+router.post("/inspection-slots", checkSchema(inspectSlotValidator.create), RequestBodyValidator.check, InspectionSlotsController.create);
 export default router;
