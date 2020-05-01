@@ -7,6 +7,6 @@ import InspectionSlotsController from "../controllers/inspections.controller";
 const router = express.Router();
 
 
-const inspectionSlotsController = InspectionSlotsController.getInstance();
-router.get("/inspection-slots", inspectionSlotsController.index);
+router.get("/inspection-slots", InspectionSlotsController.index);
+router.post("/inspection-slots", InspectionSlotsController.create);
 export default router;
