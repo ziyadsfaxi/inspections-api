@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import bluebird from "bluebird";
 import { MONGODB_URI } from "./util/secrets";
 import responseSuccessErrorOverride from "./middlewares/responseSuccessErrorOverride.middleware";
+import apiRouter from "./routes/index";
 
 // Create Express server
 const app = express();
@@ -30,5 +31,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(lusca.xframe("SAMEORIGIN"));
 app.use(lusca.xssProtection(true));
+
+const routingPoint = "/api/";
+app.use(routingPoint, apiRouter);
 
 export default app;
