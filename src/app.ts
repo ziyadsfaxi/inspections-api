@@ -4,12 +4,15 @@ import bodyParser from "body-parser";
 import lusca from "lusca";
 import mongoose from "mongoose";
 import bluebird from "bluebird";
+import cors from "cors";
 import { MONGODB_URI } from "./util/secrets";
 import responseSuccessErrorOverride from "./middlewares/responseSuccessErrorOverride.middleware";
 import apiRouter from "./routes/index";
 
 // Create Express server
 const app = express();
+
+app.use(cors());
 
 app.use(responseSuccessErrorOverride);
 
