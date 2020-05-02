@@ -57,7 +57,7 @@ class InspectionSlotsHelper {
     /**
      * static async getAvailable
      */
-    public static async getAvailable(): Promise<Array<IInspectionSlot>> {
+    public static async getNotAvailable(): Promise<Array<IInspectionSlot>> {
         const currentDate = new Date();
 
         const minDate = new Date(currentDate.getTime() + 3600000);

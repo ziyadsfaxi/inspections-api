@@ -49,9 +49,9 @@ class InspectionSlotsController {
      * @param req Resquest
      * @param res Response
      */
-    public static async getAvailable(req: Request, res: Response): Promise<void> {
+    public static async getNotAvailable(req: Request, res: Response): Promise<void> {
         try {
-            const result = await InspectionSlotsHelper.getAvailable();
+            const result = await InspectionSlotsHelper.getNotAvailable();
             
             res.sendSuccess(result);
         } catch (error) {

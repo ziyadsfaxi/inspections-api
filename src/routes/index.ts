@@ -9,6 +9,6 @@ import * as inspectSlotValidator from "../validators/inspectionSlot.validator";
 const router = express.Router();
 
 router.get("/inspection-slots", InspectionSlotsController.index);
-router.get("/inspection-slots/available", InspectionSlotsController.getAvailable);
+router.get("/inspection-slots/not-available", InspectionSlotsController.getNotAvailable);
 router.post("/inspection-slots", checkSchema(inspectSlotValidator.create), RequestBodyValidator.check, InspectionSlotsController.create);
 export default router;
