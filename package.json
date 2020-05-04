@@ -5,7 +5,7 @@
   "author": "Ziyad Sfaxi",
   "license": "MIT",
   "scripts": {
-    "start": "npm run serve",
+    "start": "node dist/server.js",
     "build": "npm run build-ts && npm run lint",
     "serve": "npm run watch",
     "watch-node": "nodemon dist/server.js",
@@ -91,5 +91,8 @@
     "ts-jest": "24.3.0",
     "ts-node": "8.6.2",
     "typescript": "3.8.2"
+  },
+  "engines": {
+    "node": "10.16.1"
   }
 }
