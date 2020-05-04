@@ -51,7 +51,8 @@ class InspectionSlotsController {
      */
     public static async getNotAvailable(req: Request, res: Response): Promise<void> {
         try {
-            const result = await InspectionSlotsHelper.getNotAvailable();
+            const day = req.query.day ? new Date(String(req.query.day)) : null;
+            const result = await InspectionSlotsHelper.getNotAvailable(day);
             
             res.sendSuccess(result);
         } catch (error) {
