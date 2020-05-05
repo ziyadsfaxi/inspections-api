@@ -59,14 +59,10 @@ class InspectionSlotsHelper {
      */
     public static async getNotAvailable(day?: Date): Promise<Array<IInspectionSlot>> {
         const currentDate = day ? new Date(day) : new Date();
-        let minDate = new Date(currentDate.getTime() + 3600000);
         let maxDate = new Date(currentDate.getTime() + 1814400000);
 
 
         if (day) {
-            minDate = new Date(currentDate);
-            minDate.setHours(0);
-            minDate.setMinutes(0);
             maxDate = new Date(currentDate);
             maxDate.setHours(17);
             maxDate.setMinutes(30);
@@ -74,7 +70,7 @@ class InspectionSlotsHelper {
 
         const result = await InspectionSlot.find({
             from: {
-                $gte: minDate,
+                $gte: currentDate,
                 $lte: maxDate,
             },
         });
