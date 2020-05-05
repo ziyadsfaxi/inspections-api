@@ -63,9 +63,7 @@ class InspectionSlotsHelper {
 
 
         if (day) {
-            maxDate = new Date(currentDate);
-            maxDate.setHours(17);
-            maxDate.setMinutes(30);
+            maxDate = new Date(currentDate.getTime() + 86400000);
         }
 
         const result = await InspectionSlot.find({
