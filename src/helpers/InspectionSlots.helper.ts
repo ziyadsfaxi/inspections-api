@@ -22,7 +22,8 @@ class InspectionSlotsHelper {
             throw new Error("Date is out of office hours!");
         }
 
-        const officeWorkingHours = { from: 9, to: 18 };
+        // from 9AM to 6PM KL Time
+        const officeWorkingHours = { from: 1, to: 10 };
         if (time.getHours() < officeWorkingHours.from || time.getHours() >= officeWorkingHours.to) {
             throw new Error("Time is out of office hours!");
         }
